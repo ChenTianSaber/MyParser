@@ -18,19 +18,15 @@ public class ErChaShuDemo {
 
 
         if(isNumeric(s)){
-            //System.out.println("s:"+s);
             return Integer.parseInt(s);
         }else if(isTree(s)){
             String s1,s2;
             s1 = isTre.group(1).trim();
             s2 = isTre.group(2).trim();
-            //System.out.println("group(1):"+isTre.group(1));
+
             int v1 = treeSum(s1);
-            //System.out.println("v1:"+v1);
-            //System.out.println("group(2):"+isTre.group(2));
             int v2 = treeSum(s2);
-            //System.out.println("v2:"+v2);
-            //System.out.println("v1+v2:"+v1+v2);
+
             return v1 + v2;
         }
 
@@ -45,9 +41,6 @@ public class ErChaShuDemo {
         if( !isTre.matches() ){
             return false;
         }
-
-        //System.out.println("group1:"+isTre.group(1));
-        //System.out.println("group2:"+isTre.group(2));
 
         return true;
     }

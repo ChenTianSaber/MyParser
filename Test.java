@@ -6,10 +6,11 @@ import java.util.regex.Pattern;
  */
 public class Test {
     public static void main(String[] args){
-        System.out.println(isTree("((2 3) 2)"));
-        System.out.println(isTree("(1 (2 3))"));
-        System.out.println(isTree("((1 2) (3 4))"));
-        System.out.println(isTree("(1 2)"));
+        System.out.println(isTree("(* (+ 1 2) (+ 3 4))"));
+        System.out.println(isTree("(+ 1 2)"));
+        System.out.println(isTree("(* (+ 2 3) 1)"));
+        System.out.println(isTree("(* 1 (+ 2 3))"));
+        //System.out.println(isTree("(1 2)"));
         //isTree("(1 (2 3))");
         //testString("(1 2)");
         //int i = "((1 2) (2 3))".length();
@@ -17,14 +18,15 @@ public class Test {
     }
 
     public static boolean isTree(String s){
-        Pattern pattern = Pattern.compile("\\((.*)(\\s\\([0-9]+\\s[0-9]+\\)|\\s[0-9]+)\\)");//5
+        //Pattern pattern = Pattern.compile("\\((\\*|-|/|\\+)(.*)(\\s\\([0-9]+\\s[0-9]+\\)|\\s[0-9]+)\\)");//5
+        Pattern pattern = Pattern.compile("\\((\\*|-|/|\\+)(.*)(\\s\\([\\*|-|/|\\+]\\s[0-9]+\\s[0-9]+\\)|\\s[0-9]+)\\)");
 
         Matcher isTre = pattern.matcher(s);
 
         if( !isTre.matches() ){
             return false;
         }
-        for(int i=1;i<=2;i++){
+        for(int i=1;i<=3;i++){
             System.out.println(isTre.group(i).trim());
         }
         return true;
